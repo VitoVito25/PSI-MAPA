@@ -47,6 +47,12 @@ public class TicTacToe {
         }
     }
 
-    public
+    public void printFirstMenu(TicTacToe game) {
+
+        System.err.println("#-- BEM VINDO AO JOGO DA VELHA EM JAVA --# \n");
+        game.printBoard();
+        System.err.println("\n \nAcima você pode observar as possiveis possições de inclusão dos marcadores ");
+
+    }
 
 }

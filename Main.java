@@ -1,3 +1,6 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class Main {
     
     public static void clearConsole() {
@@ -14,13 +17,23 @@ public class Main {
             e.printStackTrace();
         }
     }
-    
+
     public static void main(String[] args) {
 
-        TicTacToe game = new TicTacToe();
-
+        Scanner scanner = new Scanner(System.in);  // Inicia o Scanner para leitura do teclado
+        TicTacToe game = new TicTacToe(); // Inicia uma instancia do Jogo
         game.setPositionsBoard();
+
+        clearConsole();
+        game.printFirstMenu(game); // Mostra o menu principal
+        scanner.nextLine(); // Aguarda o usuario a clicar ENTER
+        clearConsole();
+
+        game.resetBoard();
         game.printBoard();
-        
+
+
+        scanner.close(); // Fecha o Scanner
+
     }
 }
