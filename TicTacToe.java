@@ -33,4 +33,18 @@ public class TicTacToe {
         }
     }
 
+    public void setPositionsBoard(){
+
+        int positionNumber = 1;
+        char positionIcon = '-';
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                positionIcon = (char) (positionNumber + '0'); 
+                board[i][j] = positionIcon;
+                positionNumber++;
+            } 
+        }
+    }
+
 }
