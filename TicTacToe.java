@@ -11,13 +11,24 @@ public class TicTacToe {
             for (int j = 0; j < 3; j++) {
                 System.out.print(" " + board[i][j] + " ");
 
-                if(j == 0 || j == 1 ) {
+                if(j < 2) {
                     System.out.print("|");
                 }
             }
-            if(i == 0 || i == 1 ) {
+            if(i < 2) {
                 System.out.println();
-                System.out.println("---------"); // Pula uma linha
+                System.out.println("-----------"); // Pula uma linha
+            } 
+        }
+    }
+
+    public void resetBoard(){
+
+        char resetIcon = '-';
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                board[i][j] = resetIcon;
             } 
         }
     }

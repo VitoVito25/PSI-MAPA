@@ -4,6 +4,7 @@ public class Main {
 
         TicTacToe game = new TicTacToe();
 
+        game.resetBoard();
         game.printBoard();
         
     }
