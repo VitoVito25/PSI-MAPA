@@ -1,3 +1,6 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class TicTacToe {
 
     private char[][] board;
@@ -65,11 +68,24 @@ public class TicTacToe {
         }
     }
 
-    public void startTurn(){
 
-        this.printBoard();
-        System.err.println("\n \nInsira a posição em que você deseja colocar o marcador: " + this.marker);
+    
+    public void startTurn(Scanner scanner){
 
+        boolean turnRuning = true;
+
+        do{
+            try{
+                this.printBoard();
+                System.err.println("\n \nInsira a posição em que você deseja colocar o marcador: " + this.marker);
+
+                int position = scanner.nextInt();
+
+            }catch (InputMismatchException e) {
+                System.err.println("Você inseriu um caracter invalido, insira um numero para validar a posição!");
+                scanner.nextLine();
+            }
+        }while(turnRuning == false);
     }
 
 }
