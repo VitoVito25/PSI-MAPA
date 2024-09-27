@@ -164,7 +164,7 @@ public class TicTacToe {
 
                 if(successInsert == true) {
                     turnRunning = false;
-                    this.changeMarker();
+                    this.changeMarker(); // Muda o marcardor
                 } else {
                     scanner.nextLine();
                 }
@@ -175,6 +175,28 @@ public class TicTacToe {
                 scanner.nextLine();
             }
         }while(turnRunning == true);
+    }
+
+    public boolean verifyWin() {
+
+        boolean gameFinished = false;
+    
+        // Verifica as colunas, linhas e diagonais, mas só considera 'X' ou 'O' para declarar vitória
+        if ((this.board[0][0] == this.board[1][0] && this.board[0][0] == this.board[2][0] && this.board[0][0] != '-') ||    // 1ª coluna
+            (this.board[0][1] == this.board[1][1] && this.board[0][1] == this.board[2][1] && this.board[0][1] != '-') ||    // 2ª coluna 
+            (this.board[0][2] == this.board[1][2] && this.board[0][2] == this.board[2][2] && this.board[0][2] != '-') ||    // 3ª coluna
+    
+            (this.board[0][0] == this.board[0][1] && this.board[0][0] == this.board[0][2] && this.board[0][0] != '-') ||    // 1ª linha
+            (this.board[1][0] == this.board[1][1] && this.board[1][0] == this.board[1][2] && this.board[1][0] != '-') ||    // 2ª linha
+            (this.board[2][0] == this.board[2][1] && this.board[2][0] == this.board[2][2] && this.board[2][0] != '-') ||    // 3ª linha
+    
+            (this.board[0][0] == this.board[1][1] && this.board[0][0] == this.board[2][2] && this.board[0][0] != '-') ||    // Diagonal \
+            (this.board[0][2] == this.board[1][1] && this.board[0][2] == this.board[2][0] && this.board[0][2] != '-')       // Diagonal /
+        ) {
+            gameFinished = true;
+        }
+    
+        return gameFinished;
     }
 
 }

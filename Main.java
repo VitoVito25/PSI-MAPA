@@ -19,7 +19,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-
+        
         Scanner scanner = new Scanner(System.in);  // Inicia o Scanner para leitura do teclado
         TicTacToe game = new TicTacToe(); // Inicia uma instancia do Jogo
         boolean gameFinished = false;
@@ -32,13 +32,14 @@ public class Main {
 
         game.resetBoard();
 
-
         do{
             game.startTurn(scanner);
             clearConsole();
-        } while(gameFinished == false);
-        
+            gameFinished = game.verifyWin();
+        } while(gameFinished == false);        
         scanner.nextLine();
+
+        
 
         scanner.close(); // Fecha o Scanner
 
