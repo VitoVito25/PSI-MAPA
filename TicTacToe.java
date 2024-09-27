@@ -3,8 +3,8 @@ import java.util.Scanner;
 
 public class TicTacToe {
 
-    private char[][] board;
-    private char marker;
+    public char[][] board;
+    public char marker;
 
     public TicTacToe() {
         board = new char[3][3];
@@ -56,7 +56,7 @@ public class TicTacToe {
 
         System.err.println("#-- BEM VINDO AO JOGO DA VELHA EM JAVA --# \n");
         this.printBoard();
-        System.err.println("\n \nAcima você pode observar as possiveis possições de inclusão dos marcadores ");
+        System.err.println("\n \nAcima você pode observar as possiveis posições de inclusão dos marcadores ");
         System.err.println("Pressione ENTER para iniciar o jogo!");
 
     }
@@ -91,14 +91,14 @@ public class TicTacToe {
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if(this.board[i][j] != 'X' || this.board[i][j] != 'O') {
+                if(this.board[i][j] != 'X' && this.board[i][j] != 'O') {
                     this.board[i][j] = positionIcon;
                 }
             } 
         }
     }
 
-    public boolean checkPosition(int position) {
+    public boolean checkPosition(char position) {
 
         boolean positionEmpty;
 
@@ -119,9 +119,9 @@ public class TicTacToe {
         return positionEmpty;
     }
 
-    public boolean setMarker(int position) {
+    public boolean setMarker(char position) {
 
-        boolean successInsert;
+        boolean successInsert = false;
         boolean avaiblePosition = this.checkPosition(position);
 
         if(avaiblePosition == true) {
@@ -132,44 +132,49 @@ public class TicTacToe {
                     if(this.board[i][j] == position) {
                         this.board[i][j] = this.marker;
                         successInsert = true;
-                        return successInsert;
                     }
                 } 
             }
 
+        } else {
+            Main.clearConsole();
+            System.err.println("Você inseriu uma posição que ja esta ocupada, insira uma nova posição!");
+            successInsert = false;
         }
 
-        System.err.println("Você inseriu uma posição que ja esta ocupada, insira uma nova posição!");
-        successInsert = false;
+        this.setRuningBoard();
         return successInsert;
-
+        
     }
 
 
     public void startTurn(Scanner scanner){
 
-        boolean turnRuning = true;
+        boolean turnRunning = true;
 
         do{
             try{
                 this.printBoard();
                 System.err.println("\n \nInsira a posição em que você deseja colocar o marcador: " + this.marker);
 
-                int position = scanner.nextInt();
+                int positionInt = scanner.nextInt();
+                char position = (char) ('0' + positionInt); // Converte o inteiro para char
 
                 boolean successInsert = this.setMarker(position);
 
                 if(successInsert == true) {
-                    turnRuning = false;
+                    turnRunning = false;
+                    this.changeMarker();
                 } else {
                     scanner.nextLine();
                 }
 
             }catch (InputMismatchException e) {
+                Main.clearConsole();
                 System.err.println("Você inseriu um caracter invalido, insira um numero para validar a posição!");
                 scanner.nextLine();
             }
-        }while(turnRuning == false);
+        }while(turnRunning == true);
     }
 
 }
