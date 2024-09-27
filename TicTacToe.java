@@ -68,8 +68,57 @@ public class TicTacToe {
         }
     }
 
+    public void showAvaiblePositions() {
 
-    
+        int positionNumber = 1;
+        char positionIcon = '-';
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if(board[i][j] == '-') {
+                    positionIcon = (char) (positionNumber + '0'); 
+                    board[i][j] = positionIcon;
+                }
+                positionNumber++;
+            } 
+        }
+    }
+
+    public void setRuningBoard() {
+
+        char positionIcon = '-';
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if(board[i][j] != 'X' || board[i][j] != 'O') {
+                    board[i][j] = positionIcon;
+                }
+            } 
+        }
+    }
+
+    public boolean checkPosition(int position) {
+
+        boolean positionEmpty = false;
+
+        this.showAvaiblePositions(); // Seta as posições apenas para os locais onde nao tem marcadores
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if(board[i][j] == position) {
+                    this.setRuningBoard();
+                    positionEmpty = true;
+                    return positionEmpty;
+                }
+            } 
+        }
+        this.setRuningBoard();
+        return positionEmpty;
+    }
+
+    public void setMarker() {}
+
+
     public void startTurn(Scanner scanner){
 
         boolean turnRuning = true;
