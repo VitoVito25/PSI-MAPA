@@ -30,8 +30,12 @@ public class Main {
         clearConsole();
 
         game.resetBoard();
+        // game.startTurn(scanner);
+        int position = 1;
+        game.setMarker(position);
         game.printBoard();
 
+        scanner.nextLine();
 
         scanner.close(); // Fecha o Scanner
 

@@ -14,7 +14,7 @@ public class TicTacToe {
     public void printBoard() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                System.out.print(" " + board[i][j] + " ");
+                System.out.print(" " + this.board[i][j] + " ");
 
                 if(j < 2) {
                     System.out.print("|");
@@ -33,7 +33,7 @@ public class TicTacToe {
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                board[i][j] = resetIcon;
+                this.board[i][j] = resetIcon;
             } 
         }
     }
@@ -46,7 +46,7 @@ public class TicTacToe {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 positionIcon = (char) (positionNumber + '0'); 
-                board[i][j] = positionIcon;
+                this.board[i][j] = positionIcon;
                 positionNumber++;
             } 
         }
@@ -57,6 +57,7 @@ public class TicTacToe {
         System.err.println("#-- BEM VINDO AO JOGO DA VELHA EM JAVA --# \n");
         this.printBoard();
         System.err.println("\n \nAcima você pode observar as possiveis possições de inclusão dos marcadores ");
+        System.err.println("Pressione ENTER para iniciar o jogo!");
 
     }
 
@@ -75,9 +76,9 @@ public class TicTacToe {
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if(board[i][j] == '-') {
+                if(this.board[i][j] == '-') {
                     positionIcon = (char) (positionNumber + '0'); 
-                    board[i][j] = positionIcon;
+                    this.board[i][j] = positionIcon;
                 }
                 positionNumber++;
             } 
@@ -90,8 +91,8 @@ public class TicTacToe {
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if(board[i][j] != 'X' || board[i][j] != 'O') {
-                    board[i][j] = positionIcon;
+                if(this.board[i][j] != 'X' || this.board[i][j] != 'O') {
+                    this.board[i][j] = positionIcon;
                 }
             } 
         }
@@ -105,7 +106,7 @@ public class TicTacToe {
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if(board[i][j] == position) {
+                if(this.board[i][j] == position) {
                     this.setRuningBoard();
                     positionEmpty = true;
                     return positionEmpty;
@@ -128,8 +129,8 @@ public class TicTacToe {
 
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {
-                    if(board[i][j] == position) {
-                        board[i][j] = this.marker;
+                    if(this.board[i][j] == position) {
+                        this.board[i][j] = this.marker;
                         successInsert = true;
                         return successInsert;
                     }
@@ -156,8 +157,13 @@ public class TicTacToe {
 
                 int position = scanner.nextInt();
 
-                
+                boolean successInsert = this.setMarker(position);
 
+                if(successInsert == true) {
+                    turnRuning = false;
+                } else {
+                    scanner.nextLine();
+                }
 
             }catch (InputMismatchException e) {
                 System.err.println("Você inseriu um caracter invalido, insira um numero para validar a posição!");
