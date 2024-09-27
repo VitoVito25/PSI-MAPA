@@ -1,9 +1,11 @@
 public class TicTacToe {
 
     private char[][] board;
+    private char marker;
 
     public TicTacToe() {
         board = new char[3][3];
+        marker = 'X';
     }
 
     public void printBoard() {
@@ -47,11 +49,26 @@ public class TicTacToe {
         }
     }
 
-    public void printFirstMenu(TicTacToe game) {
+    public void printFirstMenu() {
 
         System.err.println("#-- BEM VINDO AO JOGO DA VELHA EM JAVA --# \n");
-        game.printBoard();
+        this.printBoard();
         System.err.println("\n \nAcima você pode observar as possiveis possições de inclusão dos marcadores ");
+
+    }
+
+    public void changeMarker() {
+        if(this.marker == 'X') {
+            this.marker = 'O';
+        } else {
+            this.marker = 'X';
+        }
+    }
+
+    public void startTurn(){
+
+        this.printBoard();
+        System.err.println("\n \nInsira a posição em que você deseja colocar o marcador: " + this.marker);
 
     }
 

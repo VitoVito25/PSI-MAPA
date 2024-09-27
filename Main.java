@@ -25,7 +25,7 @@ public class Main {
         game.setPositionsBoard();
 
         clearConsole();
-        game.printFirstMenu(game); // Mostra o menu principal
+        game.printFirstMenu(); // Mostra o menu principal
         scanner.nextLine(); // Aguarda o usuario a clicar ENTER
         clearConsole();
 
