@@ -37,9 +37,6 @@ public class Main {
             clearConsole();
             gameFinished = game.verifyWin();
         } while(gameFinished == false);        
-        scanner.nextLine();
-
-        
 
         scanner.close(); // Fecha o Scanner
 
