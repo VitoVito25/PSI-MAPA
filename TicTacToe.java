@@ -99,7 +99,7 @@ public class TicTacToe {
 
     public boolean checkPosition(int position) {
 
-        boolean positionEmpty = false;
+        boolean positionEmpty;
 
         this.showAvaiblePositions(); // Seta as posições apenas para os locais onde nao tem marcadores
 
@@ -112,11 +112,37 @@ public class TicTacToe {
                 }
             } 
         }
+
         this.setRuningBoard();
+        positionEmpty = false;
         return positionEmpty;
     }
 
-    public void setMarker() {}
+    public boolean setMarker(int position) {
+
+        boolean successInsert;
+        boolean avaiblePosition = this.checkPosition(position);
+
+        if(avaiblePosition == true) {
+            this.showAvaiblePositions(); // Seta as posições apenas para os locais onde nao tem marcadores
+
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if(board[i][j] == position) {
+                        board[i][j] = this.marker;
+                        successInsert = true;
+                        return successInsert;
+                    }
+                } 
+            }
+
+        }
+
+        System.err.println("Você inseriu uma posição que ja esta ocupada, insira uma nova posição!");
+        successInsert = false;
+        return successInsert;
+
+    }
 
 
     public void startTurn(Scanner scanner){
@@ -129,6 +155,9 @@ public class TicTacToe {
                 System.err.println("\n \nInsira a posição em que você deseja colocar o marcador: " + this.marker);
 
                 int position = scanner.nextInt();
+
+                
+
 
             }catch (InputMismatchException e) {
                 System.err.println("Você inseriu um caracter invalido, insira um numero para validar a posição!");
