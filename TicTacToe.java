@@ -1,6 +1,12 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * Classe do jogo da velha
+ * 
+ * @author Victor Renaud
+ * @version 1.0
+ */
 public class TicTacToe {
 
     public char[][] board;
@@ -11,13 +17,14 @@ public class TicTacToe {
         marker = 'X';
     }
 
-    public void printBoard() {
-        /**
+         /**
          * Função para imprimir o tabuleiro atual na tela
          * 
          * @author Victor Renaud
          * @version 1.0
          */
+    public void printBoard() {
+        
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 System.out.print(" " + this.board[i][j] + " ");
@@ -33,13 +40,13 @@ public class TicTacToe {
         }
     }
 
+    /**
+     * Função para reiniciar todas as posições do tabuleiro
+     * 
+     * @author Victor Renaud
+     * @version 1.0
+     */
     public void resetBoard(){
-        /**
-         * Função para reiniciar todas as posições do tabuleiro
-         * 
-         * @author Victor Renaud
-         * @version 1.0
-         */
 
         char resetIcon = '-';
 
@@ -50,13 +57,13 @@ public class TicTacToe {
         }
     }
 
+    /**
+     * Função para verificar quais as entradas devem ser colocadas para inserir um marcador em determinada posição
+     * 
+     * @author Victor Renaud
+     * @version 1.0
+     */
     public void setPositionsBoard(){
-        /**
-         * Função para verificar quais as entradas devem ser colocadas para inserir um marcador em determinada posição
-         * 
-         * @author Victor Renaud
-         * @version 1.0
-         */
 
         int positionNumber = 1;
         char positionIcon = '-';
@@ -70,13 +77,13 @@ public class TicTacToe {
         }
     }
 
+    /**
+     * Função para imprimir o primeiro menu do jogo
+     * 
+     * @author Victor Renaud
+     * @version 1.0
+     */
     public void printFirstMenu() {
-        /**
-         * Função para imprimir o primeiro menu do jogo
-         * 
-         * @author Victor Renaud
-         * @version 1.0
-         */
 
         System.err.println("#-- BEM VINDO AO JOGO DA VELHA EM JAVA --# \n");
         this.printBoard();
@@ -85,13 +92,14 @@ public class TicTacToe {
 
     }
 
+    /**
+     * Função para trocar o marcador
+     * 
+     * @author Victor Renaud
+     * @version 1.0
+     */
     public void changeMarker() {
-        /**
-         * Função para trocar o marcador
-         * 
-         * @author Victor Renaud
-         * @version 1.0
-         */
+
         if(this.marker == 'X') {
             this.marker = 'O';
         } else {
@@ -99,13 +107,13 @@ public class TicTacToe {
         }
     }
 
+    /**
+     * Função para trocas as posições vazias por numeros
+     * 
+     * @author Victor Renaud
+     * @version 1.0
+     */
     public void showAvaiblePositions() {
-        /**
-         * Função para trocas as posições vazias por numeros
-         * 
-         * @author Victor Renaud
-         * @version 1.0
-         */
 
         int positionNumber = 1;
         char positionIcon = '-';
@@ -121,13 +129,13 @@ public class TicTacToe {
         }
     }
 
+    /**
+     * Função para voltar as posições vazias de numeros para "-"
+     * 
+     * @author Victor Renaud
+     * @version 1.0
+     */
     public void setRuningBoard() {
-        /**
-         * Função para voltar as posições vazias de numeros para "-"
-         * 
-         * @author Victor Renaud
-         * @version 1.0
-         */
 
         char positionIcon = '-';
 
@@ -140,15 +148,15 @@ public class TicTacToe {
         }
     }
 
+    /**
+     * Função para verificar se a posição selecionada pelo usuario é valida
+     * 
+     * @return Retorna true se a posição esta livre ou false se nao
+     * 
+     * @author Victor Renaud
+     * @version 1.0
+     */
     public boolean checkPosition(char position) {
-        /**
-         * Função para verificar se a posição selecionada pelo usuario é valida
-         * 
-         * @return Retorna true se a posição esta livre ou false se nao
-         * 
-         * @author Victor Renaud
-         * @version 1.0
-         */
 
         boolean positionEmpty;
 
@@ -169,16 +177,16 @@ public class TicTacToe {
         return positionEmpty;
     }
 
+    /**
+     * Função para colocar o marcador na posição selecionada
+     * 
+     * @param position A posição onde o usuario deseja inserir o marcador
+     * @return Retorna true se o marcador foi inserido com sucesso ou false caso nao
+     * 
+     * @author Victor Renaud
+     * @version 1.0
+     */
     public boolean setMarker(char position) {
-        /**
-         * Função para colocar o marcador na posição selecionada
-         * 
-         * @param position A posição onde o usuario deseja inserir o marcador
-         * @return Retorna true se o marcador foi inserido com sucesso ou false caso nao
-         * 
-         * @author Victor Renaud
-         * @version 1.0
-         */
 
         boolean successInsert = false;
         boolean avaiblePosition = this.checkPosition(position);
@@ -206,16 +214,15 @@ public class TicTacToe {
         
     }
 
-
+    /**
+     * Função para iniciar um novo turno no jogo
+     * 
+     * @param scanner Scanner para leitura de entrada de dados
+     * 
+     * @author Victor Renaud
+     * @version 1.0
+     */
     public void startTurn(Scanner scanner){
-        /**
-         * Função para iniciar um novo turno no jogo
-         * 
-         * @param scanner Scanner para leitura de entrada de dados
-         * 
-         * @author Victor Renaud
-         * @version 1.0
-         */
 
         boolean turnRunning = true;
 
@@ -244,15 +251,15 @@ public class TicTacToe {
         }while(turnRunning == true);
     }
 
+    /**
+     * Função para verificar se o usuario ganhou o jogo
+     * 
+     * @return Retorna true se deu vitoria ou false se ainda nao
+     * 
+     * @author Victor Renaud
+     * @version 1.0
+     */
     public boolean verifyWin() {
-        /**
-         * Função para verificar se o usuario ganhou o jogo
-         * 
-         * @return Retorna true se deu vitoria ou false se ainda nao
-         * 
-         * @author Victor Renaud
-         * @version 1.0
-         */
 
         boolean gameFinished = false;
     
@@ -273,15 +280,15 @@ public class TicTacToe {
         return gameFinished;
     }
 
+    /**
+     * Função para verificar empate
+     * 
+     * @return Retorna true se deu empate ou false se ainda nao
+     * 
+     * @author Victor Renaud
+     * @version 1.0
+     */
     public boolean verifyDraw() {
-        /**
-         * Função para verufucar empate
-         * 
-         * @return Retorna true se deu empate ou false se ainda nao
-         * 
-         * @author Victor Renaud
-         * @version 1.0
-         */
 
         int markerCount = 0;
 

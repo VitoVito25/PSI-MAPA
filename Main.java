@@ -1,8 +1,22 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * Classe Main para rodar o jogo
+ * 
+ * 
+ * @author Victor Renaud
+ * @version 1.0
+ */
 public class Main {
     
+    /**
+     * Função para limpar o console
+     * 
+     * 
+     * @author Victor Renaud
+     * @version 1.0
+     */
     public static void clearConsole() {
         try {
             if (System.getProperty("os.name").contains("Windows")) {
@@ -18,6 +32,13 @@ public class Main {
         }
     }
 
+    /**
+     * Função main para rodar o jogo
+     * 
+     * 
+     * @author Victor Renaud
+     * @version 1.0
+     */
     public static void main(String[] args) {
         
         Scanner scanner = new Scanner(System.in);  // Inicia o Scanner para leitura do teclado
