@@ -12,6 +12,12 @@ public class TicTacToe {
     }
 
     public void printBoard() {
+        /**
+         * Função para imprimir o tabuleiro atual na tela
+         * 
+         * @author Victor Renaud
+         * @version 1.0
+         */
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 System.out.print(" " + this.board[i][j] + " ");
@@ -28,6 +34,12 @@ public class TicTacToe {
     }
 
     public void resetBoard(){
+        /**
+         * Função para reiniciar todas as posições do tabuleiro
+         * 
+         * @author Victor Renaud
+         * @version 1.0
+         */
 
         char resetIcon = '-';
 
@@ -39,6 +51,12 @@ public class TicTacToe {
     }
 
     public void setPositionsBoard(){
+        /**
+         * Função para verificar quais as entradas devem ser colocadas para inserir um marcador em determinada posição
+         * 
+         * @author Victor Renaud
+         * @version 1.0
+         */
 
         int positionNumber = 1;
         char positionIcon = '-';
@@ -53,6 +71,12 @@ public class TicTacToe {
     }
 
     public void printFirstMenu() {
+        /**
+         * Função para imprimir o primeiro menu do jogo
+         * 
+         * @author Victor Renaud
+         * @version 1.0
+         */
 
         System.err.println("#-- BEM VINDO AO JOGO DA VELHA EM JAVA --# \n");
         this.printBoard();
@@ -62,6 +86,12 @@ public class TicTacToe {
     }
 
     public void changeMarker() {
+        /**
+         * Função para trocar o marcador
+         * 
+         * @author Victor Renaud
+         * @version 1.0
+         */
         if(this.marker == 'X') {
             this.marker = 'O';
         } else {
@@ -70,6 +100,12 @@ public class TicTacToe {
     }
 
     public void showAvaiblePositions() {
+        /**
+         * Função para trocas as posições vazias por numeros
+         * 
+         * @author Victor Renaud
+         * @version 1.0
+         */
 
         int positionNumber = 1;
         char positionIcon = '-';
@@ -86,6 +122,12 @@ public class TicTacToe {
     }
 
     public void setRuningBoard() {
+        /**
+         * Função para voltar as posições vazias de numeros para "-"
+         * 
+         * @author Victor Renaud
+         * @version 1.0
+         */
 
         char positionIcon = '-';
 
@@ -99,6 +141,14 @@ public class TicTacToe {
     }
 
     public boolean checkPosition(char position) {
+        /**
+         * Função para verificar se a posição selecionada pelo usuario é valida
+         * 
+         * @return Retorna true se a posição esta livre ou false se nao
+         * 
+         * @author Victor Renaud
+         * @version 1.0
+         */
 
         boolean positionEmpty;
 
@@ -120,6 +170,15 @@ public class TicTacToe {
     }
 
     public boolean setMarker(char position) {
+        /**
+         * Função para colocar o marcador na posição selecionada
+         * 
+         * @param position A posição onde o usuario deseja inserir o marcador
+         * @return Retorna true se o marcador foi inserido com sucesso ou false caso nao
+         * 
+         * @author Victor Renaud
+         * @version 1.0
+         */
 
         boolean successInsert = false;
         boolean avaiblePosition = this.checkPosition(position);
@@ -149,6 +208,14 @@ public class TicTacToe {
 
 
     public void startTurn(Scanner scanner){
+        /**
+         * Função para iniciar um novo turno no jogo
+         * 
+         * @param scanner Scanner para leitura de entrada de dados
+         * 
+         * @author Victor Renaud
+         * @version 1.0
+         */
 
         boolean turnRunning = true;
 
@@ -178,10 +245,17 @@ public class TicTacToe {
     }
 
     public boolean verifyWin() {
+        /**
+         * Função para verificar se o usuario ganhou o jogo
+         * 
+         * @return Retorna true se deu vitoria ou false se ainda nao
+         * 
+         * @author Victor Renaud
+         * @version 1.0
+         */
 
         boolean gameFinished = false;
     
-        // Verifica as colunas, linhas e diagonais, mas só considera 'X' ou 'O' para declarar vitória
         if ((this.board[0][0] == this.board[1][0] && this.board[0][0] == this.board[2][0] && this.board[0][0] != '-') ||    // 1ª coluna
             (this.board[0][1] == this.board[1][1] && this.board[0][1] == this.board[2][1] && this.board[0][1] != '-') ||    // 2ª coluna 
             (this.board[0][2] == this.board[1][2] && this.board[0][2] == this.board[2][2] && this.board[0][2] != '-') ||    // 3ª coluna
@@ -200,6 +274,14 @@ public class TicTacToe {
     }
 
     public boolean verifyDraw() {
+        /**
+         * Função para verufucar empate
+         * 
+         * @return Retorna true se deu empate ou false se ainda nao
+         * 
+         * @author Victor Renaud
+         * @version 1.0
+         */
 
         int markerCount = 0;
 
@@ -216,6 +298,6 @@ public class TicTacToe {
         }
 
         return false;
-        
+
     }
 }
